@@ -1,103 +1,93 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+
+  // TODO: Replace with actual call to Django backend
+  const handleLogin = async e => {
+    e.preventDefault();
+    setLoading(true);
+    setErr("");
+
+    // Simulate API call
+    setTimeout(() => {
+      if (form.email && form.password) {
+        router.push("/main");
+      } else {
+        setErr("Invalid credentials");
+      }
+      setLoading(false);
+    }, 1000);
+  };
+
+  return (
+    <main className="relative min-h-screen flex items-center justify-center bg-gray-900">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-80"
+      >
+        <source src="/a.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/60" />
+
+      {/* Login Box */}
+      <div className="relative z-10 p-8 max-w-md w-full bg-white/10 shadow-xl rounded-2xl backdrop-blur flex flex-col items-center">
+        <p className="text-3xl font-bold text-center text-white mb-4">Welcome to</p>
+        <h1 className="mb-2 text-5xl font-extrabold text-center bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#FFFFFF] 
+        bg-clip-text text-transparent animate-gradient">GroupSence</h1>
+        
+        <p className="text-lg text-center text-gray-200 mb-8">A Blood Group Detection Platform</p>
+
+        <form onSubmit={handleLogin} className="w-full flex flex-col gap-4">
+          <input
+            className="px-4 py-3 rounded-lg bg-black/40 text-white placeholder-gray-200 outline-none"
+            type="email"
+            placeholder="Email"
+            name="email"
+            autoComplete="username"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className="px-4 py-3 rounded-lg bg-black/40 text-white placeholder-gray-200 outline-none"
+            type="password"
+            placeholder="Password"
+            name="password"
+            autoComplete="current-password"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+          {err && <div className="text-red-400 text-sm">{err}</div>}
+          <button
+            type="submit" className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-blue-600 hover:to-purple-600 rounded-lg py-3 text-white font-semibold cursor-pointer transition disabled:opacity-60"
+            disabled={loading}>{loading ? "Logging in..." : "Login"}
+          </button>
+
+        </form>
+        <div className="mt-5 text-gray-200 text-sm">
+          New user?{" "}
+          <Link href="/signup">
+            <span className="text-blue-300 font-bold underline cursor-pointer hover:text-red-600">
+              Sign Up
+            </span>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </main>
   );
 }
