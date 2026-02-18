@@ -21,7 +21,7 @@ export default function Home() {
     // Simulate API call
     setTimeout(() => {
       if (form.email && form.password) {
-        router.push("/main");
+        router.push("/about");
       } else {
         setErr("Invalid credentials");
       }
