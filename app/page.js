@@ -41,8 +41,8 @@ export default function Home() {
       </video>
       <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10" />
 
-      {/* LOGIN BOX - FRONT + CENTERED + GAP FROM BOTTOM */}
-      <div className="relative z-50 flex items-center justify-center h-[75vh] px-3">  {/* ✅ h-[75vh] = GAP */}
+      {/* LOGIN BOX - FULL HEIGHT (NO GAP) */}
+      <div className="relative z-50 flex items-center justify-center flex-1 px-3">  {/* ✅ flex-1 = FULL HEIGHT */}
         <div className="p-8 max-w-md w-full bg-white/10 shadow-xl rounded-2xl backdrop-blur flex flex-col items-center">
           <p className="text-3xl font-bold text-center text-white mb-4">Welcome to</p>
           <h1 className="mb-2 text-5xl font-extrabold text-center bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#FFFFFF] bg-clip-text text-transparent animate-gradient">GroupSence</h1>
@@ -90,8 +90,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ✅ FOOTER - FIXED BOTTOM + FRONT */}
-      <div className="relative z-50 flex-shrink-0">  {/* ✅ flex-shrink-0 = Fixed height */}
+      {/* ✅ FOOTER - FIXED BOTTOM */}
+      <div className="relative z-50 flex-shrink-0">
         <Footer />
       </div>
     </div>

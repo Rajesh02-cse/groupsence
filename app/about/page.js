@@ -19,7 +19,7 @@ export default function About() {
   };
 
   return (
-    <>
+    <div className="h-screen w-screen bg-gray-900 relative overflow-hidden flex flex-col">
       {/* 🔥 RED SOLID LOGOUT BUTTON - Top Right */}
       <button 
         onClick={() => {
@@ -38,29 +38,30 @@ export default function About() {
         </h1>
       </nav>
 
-      {/* Background video */}
+      {/* Background video + overlay */}
       <video
         src="/d.mp4"
         autoPlay
         loop
         muted
         playsInline
-        className="fixed top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
       />
+      <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10" />
 
-      {/* SCROLLABLE MAIN CONTENT */}
-      <main className="relative z-10 min-h-screen flex flex-col items-center justify-center pt-24 px-4 pb-24">
+      {/* MAIN CONTENT - FLEX LAYOUT */}
+      <main className="relative z-50 flex-1 flex flex-col items-center pt-24 px-4 overflow-y-auto">
         
-        {/* ✅ SINGLE FULL-WIDTH TEXT BOX - HORIZONTALLY STRETCHED */}
-        <div className="w-full max-w-4xl bg-white/15 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl px-8 py-12 mb-12">
-         
-          {/* Title - Centered */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#FFFFFF] bg-clip-text text-transparent drop-shadow-2xl text-center leading-tight mb-8">
+        {/* ✅ FULL WIDTH TEXT BOX */}
+        <div className="w-full max-w-4xl bg-white/15 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl px-6 py-8 mb-6 flex flex-col">
+          
+          {/* Title - SMALLER */}
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#FFFFFF] bg-clip-text text-transparent drop-shadow-2xl text-center leading-tight mb-6">
             Know Your Blood Group — Quickly & Easily
           </h1>
 
-          {/* ✅ ALL TEXT CONTENT - ONE BIG HORIZONTAL BOX */}
-          <div className="w-full bg-white/10 backdrop-blur-xl rounded-xl border border-white/30 p-8 sm:p-10 shadow-xl space-y-6 text-white text-sm sm:text-base lg:text-lg leading-relaxed">
+          {/* ✅ ALL TEXT - SMALLER SIZE */}
+          <div className="w-full bg-white/10 backdrop-blur-xl rounded-xl border border-white/30 p-6 sm:p-8 shadow-xl space-y-4 text-white text-xs sm:text-sm leading-relaxed flex-1 max-h-[60vh] overflow-y-auto">
             <p>
               Your fingerprint is more than just a unique identity marker. Research suggests that certain fingerprint patterns—such as <strong>loops, whorls, ridge density, and minutiae points</strong>—may show correlations with genetic traits, including blood group.
             </p>
@@ -73,45 +74,46 @@ export default function About() {
               Our platform uses this concept to provide a smart, <strong>non-invasive</strong> way to predict your blood type. Simply upload a clear fingerprint image, and our system studies the pattern details to generate results within seconds.
             </p>
             
-            <p className="text-sm italic text-gray-300">
+            <p className="text-xs italic text-gray-300">
               <em>No needles. No lab visits. Just a fast, digital solution designed for Awareness, Research, and Emergency readiness.</em>
             </p>
             
-            <p className="text-xs sm:text-sm text-yellow-300 bg-yellow-900/50 p-4 rounded-lg border border-yellow-500/50">
+            <p className="text-xs text-yellow-300 bg-yellow-900/50 p-3 rounded-lg border border-yellow-500/50">
               <strong>*For medical treatments or blood transfusions, always confirm with a certified laboratory test.*</strong>
             </p>
           </div>
 
-          {/* Checkbox + Button - Bottom of same box */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12 p-8 bg-black/30 rounded-2xl backdrop-blur-xl border border-white/20">
-            <label className="flex items-center gap-3 cursor-pointer group p-4 rounded-xl hover:bg-black/20 transition-all flex-1 justify-center">
-              <input
-                type="checkbox"
-                checked={termsAccepted}
-                onChange={(e) => setTermsAccepted(e.target.checked)}
-                className="w-6 h-6 text-blue-400 bg-white/20 backdrop-blur-sm rounded border-2 border-white/50 focus:ring-2 focus:ring-blue-400 transition-all group-hover:scale-110"
-                required
-              />
-              <span className="text-lg text-white font-medium">Accept Terms & Privacy Policy</span>
-            </label>
-            
-            <button
-              type="button"
-              onClick={handleSubmit}
-              disabled={!termsAccepted || loading}
-              className="flex-1 max-w-md bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#ffffff10] hover:from-red-600 hover:via-blue-600 hover:to-white/20 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-white/30 backdrop-blur-sm"
-            >
-              {loading ? "Loading..." : "Continue to Scanner"}
-            </button>
+          {/* Checkbox + Button */}
+          <div className="flex-shrink-0 mt-6 p-6 bg-black/30 rounded-2xl backdrop-blur-xl border border-white/20">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <label className="flex items-center gap-2 cursor-pointer p-3 rounded-xl hover:bg-black/20 transition-all flex-1 justify-center text-sm">
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                  className="w-5 h-5 text-blue-400 bg-white/20 backdrop-blur-sm rounded border-2 border-white/50 focus:ring-2 focus:ring-blue-400 transition-all"
+                  required
+                />
+                <span className="text-sm font-medium">Accept Terms & Privacy Policy</span>
+              </label>
+              
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={!termsAccepted || loading}
+                className="flex-1 max-w-sm bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#ffffff10] hover:from-red-600 hover:via-blue-600 hover:to-white/20 text-white font-bold py-3 px-6 rounded-xl text-sm shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 border border-white/30 backdrop-blur-sm"
+              >
+                {loading ? "Loading..." : "Continue to Scanner"}
+              </button>
+            </div>
           </div>
         </div>
-
-        {/* Extra spacing for natural scroll */}
-        <div className="h-16"></div>
       </main>
 
-      {/* Footer */}
-      <Footer />
-    </>
+      {/* ✅ FOOTER - FIXED BOTTOM */}
+      <div className="relative z-50 flex-shrink-0 border-t border-white/10">
+        <Footer />
+      </div>
+    </div>
   );
 }

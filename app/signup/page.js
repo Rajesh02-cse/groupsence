@@ -44,8 +44,8 @@ export default function Signup() {
       </video>
       <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10" />
 
-      {/* SIGNUP BOX - SAME AS LOGIN (h-[75vh] + px-3) */}
-      <div className="relative z-50 flex items-center justify-center h-[75vh] px-3">
+      {/* SIGNUP BOX - FULL HEIGHT (NO GAP) */}
+      <div className="relative z-50 flex items-center justify-center flex-1 px-4">  {/* ✅ flex-1 = NO GAP */}
         <div className="p-8 max-w-md w-full bg-white/10 shadow-xl rounded-2xl backdrop-blur flex flex-col items-center">
           <h2 className="text-3xl font-bold text-center text-white mb-4">Create Account</h2>
           
