@@ -20,18 +20,18 @@ export default function About() {
 
   return (
     <div className="h-screen w-screen bg-gray-900 relative overflow-hidden flex flex-col">
-      {/* 🔥 RED SOLID LOGOUT BUTTON - Top Right */}
+      {/* 🔥 RED SOLID LOGOUT BUTTON - Mobile Safe */}
       <button 
         onClick={() => {
           localStorage.clear();
           window.location.href = "/";
         }}
-        className="fixed top-6 right-6 z-50 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-red-500/50 hover:shadow-xl hover:shadow-red-500/70 border border-red-400/50 transition-all duration-300 text-sm sm:text-base hover:scale-105 active:scale-95"
+        className="fixed top-3 right-3 sm:top-6 sm:right-6 z-[100] bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold shadow-lg shadow-red-500/50 hover:shadow-xl hover:shadow-red-500/70 border border-red-400/50 transition-all duration-300 text-xs sm:text-sm sm:text-base hover:scale-105 active:scale-95"
       >
         Logout
       </button>
       
-      {/* Glassy Responsive Navbar */}
+      {/* ✅ NAVBAR - ORIGINAL POSITION top-4 */}
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90vw] max-w-4xl bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 z-50 h-20 flex items-center justify-center px-6 sm:px-8 shadow-lg">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#ffffff] bg-clip-text text-transparent select-none tracking-wide">
           GroupSence
@@ -49,18 +49,18 @@ export default function About() {
       />
       <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10" />
 
-      {/* MAIN CONTENT - FLEX LAYOUT */}
-      <main className="relative z-50 flex-1 flex flex-col items-center pt-24 px-4 overflow-y-auto">
+      {/* MAIN CONTENT - Mobile Safe Padding */}
+      <main className="relative z-50 flex-1 flex flex-col items-center pt-24 sm:pt-28 px-4 overflow-y-auto">
         
-        {/* ✅ FULL WIDTH TEXT BOX */}
+        {/* ✅ FULL WIDTH TEXT BOX - UNCHANGED */}
         <div className="w-full max-w-4xl bg-white/15 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl px-6 py-8 mb-6 flex flex-col">
           
-          {/* Title - SMALLER */}
+          {/* Title - UNCHANGED */}
           <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#FFFFFF] bg-clip-text text-transparent drop-shadow-2xl text-center leading-tight mb-6">
             Know Your Blood Group — Quickly & Easily
           </h1>
 
-          {/* ✅ ALL TEXT - SMALLER SIZE */}
+          {/* ✅ ALL TEXT - UNCHANGED */}
           <div className="w-full bg-white/10 backdrop-blur-xl rounded-xl border border-white/30 p-6 sm:p-8 shadow-xl space-y-4 text-white text-xs sm:text-sm leading-relaxed flex-1 max-h-[60vh] overflow-y-auto">
             <p>
               Your fingerprint is more than just a unique identity marker. Research suggests that certain fingerprint patterns—such as <strong>loops, whorls, ridge density, and minutiae points</strong>—may show correlations with genetic traits, including blood group.
@@ -83,7 +83,7 @@ export default function About() {
             </p>
           </div>
 
-          {/* Checkbox + Button */}
+          {/* Checkbox + Button - UNCHANGED */}
           <div className="flex-shrink-0 mt-6 p-6 bg-black/30 rounded-2xl backdrop-blur-xl border border-white/20">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <label className="flex items-center gap-2 cursor-pointer p-3 rounded-xl hover:bg-black/20 transition-all flex-1 justify-center text-sm">
