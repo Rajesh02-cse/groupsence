@@ -1,8 +1,8 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+import Footer from "../components/footer";
 
 export default function Signup() {
   const router = useRouter();
@@ -14,7 +14,6 @@ export default function Signup() {
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
-  // TODO: Replace with actual call to Django backend
   const handleSignup = async e => {
     e.preventDefault();
     setLoading(true);
@@ -32,93 +31,103 @@ export default function Signup() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-blue-900 via-indigo-900 to-purple-900 relative">
-      {/* Background Video + semi-transparent overlay */}
+    <div className="h-screen w-screen bg-gray-900 relative overflow-hidden flex flex-col">
+      {/* Background Video - FULL SCREEN BEHIND */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-80 z-0"
       >
         <source src="/a.mp4" type="video/mp4" />
       </video>
-      <div className="absolute top-0 left-0 w-full h-full bg-black/60 backdrop-blur"></div>
-      {/* Centered Signup Card */}
-      <div className="relative z-10 w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-2xl shadow-2xl border border-white/20">
-        <h2 className="text-3xl font-bold text-white text-center mb-6 drop-shadow">Create Account</h2>
-        <form onSubmit={handleSignup} className="flex flex-col gap-5">
-          <input
-            type="text"
-            name="name"
-            className="px-4 py-3 rounded-xl bg-black/30 text-white placeholder-gray-200 outline-none focus:ring-2 focus:ring-blue-400 transition"
-            placeholder="Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            autoComplete="name"
-          />
-          <input
-            type="number"
-            min={1}
-            max={150}
-            name="age"
-            className="px-4 py-3 rounded-xl bg-black/30 text-white placeholder-gray-200 outline-none focus:ring-2 focus:ring-blue-400 transition"
-            placeholder="Age"
-            value={form.age}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            className="px-4 py-3 rounded-xl bg-black/30 text-white placeholder-gray-200 outline-none focus:ring-2 focus:ring-blue-400 transition"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            autoComplete="email"
-          />
-          <div className="relative">
+      <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10" />
+
+      {/* SIGNUP BOX - SAME AS LOGIN (h-[75vh] + px-3) */}
+      <div className="relative z-50 flex items-center justify-center h-[75vh] px-3">
+        <div className="p-8 max-w-md w-full bg-white/10 shadow-xl rounded-2xl backdrop-blur flex flex-col items-center">
+          <h2 className="text-3xl font-bold text-center text-white mb-4">Create Account</h2>
+          
+          <form onSubmit={handleSignup} className="w-full flex flex-col gap-4">
             <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              className="px-4 py-3 rounded-xl bg-black/30 text-white placeholder-gray-200 outline-none focus:ring-2 focus:ring-blue-400 w-full transition pr-12"
-              placeholder="Password"
-              value={form.password}
+              type="text"
+              name="name"
+              className="px-4 py-3 rounded-lg bg-black/40 text-white placeholder-gray-200 outline-none"
+              placeholder="Name"
+              value={form.name}
               onChange={handleChange}
               required
-              autoComplete="new-password"
+              autoComplete="name"
             />
+            <input
+              type="number"
+              min={1}
+              max={150}
+              name="age"
+              className="px-4 py-3 rounded-lg bg-black/40 text-white placeholder-gray-200 outline-none"
+              placeholder="Age"
+              value={form.age}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              className="px-4 py-3 rounded-lg bg-black/40 text-white placeholder-gray-200 outline-none"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              autoComplete="email"
+            />
+            <div className="relative w-full">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="px-4 py-3 rounded-lg bg-black/40 text-white placeholder-gray-200 outline-none w-full pr-12"
+                placeholder="Password"
+                value={form.password}
+                onChange={handleChange}
+                required
+                autoComplete="new-password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                tabIndex={-1}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-200 hover:text-blue-400"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <RiEyeOffFill size={22} /> : <RiEyeFill size={22} />}
+              </button>
+            </div>
+            {err && <div className="text-red-400 text-sm text-center">{err}</div>}
+            {success && <div className="text-green-300 text-sm text-center">{success}</div>}
             <button
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              tabIndex={-1}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-200 hover:text-blue-400 focus-visible:outline-none"
-              aria-label={showPassword ? "Hide password" : "Show password"}
+              type="submit"
+              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-blue-600 hover:to-purple-600 rounded-lg py-3 text-white font-bold shadow-lg text-lg transition disabled:opacity-60"
+              disabled={loading}
             >
-              {showPassword ? (
-                <RiEyeOffFill size={22} />
-              ) : (
-                <RiEyeFill size={22} />
-              )}
+              {loading ? "Signing up..." : "Sign Up"}
+            </button>
+          </form>
+          <div className="mt-5 text-gray-200 text-sm text-center">
+            Already have an account?{" "}
+            <button
+              onClick={() => router.push("/")}
+              className="text-blue-300 font-bold underline cursor-pointer hover:text-red-600"
+            >
+              Log In
             </button>
           </div>
-          {err && <div className="text-red-400 text-sm text-center">{err}</div>}
-          {success && <div className="text-green-300 text-sm text-center">{success}</div>}
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-blue-600 hover:to-purple-600 rounded-xl py-3 text-white font-bold shadow-lg focus:ring-2 focus:ring-white text-lg transition disabled:opacity-60"
-            disabled={loading}
-          >
-            {loading ? "Signing up..." : "Sign Up"}
-          </button>
-        </form>
-        <button
-            className="block w-full mt-6 text-blue-300 underline rounded-xl py-2 hover:text-red-500 text-sm transition cursor-pointer"
-            onClick={() => router.push("/")}>Already have an account? <span className="font-medium">Log In</span>
-        </button>
+        </div>
       </div>
-    </main>
+
+      {/* ✅ FOOTER - SAME AS LOGIN */}
+      <div className="relative z-50 flex-shrink-0">
+        <Footer />
+      </div>
+    </div>
   );
 }

@@ -20,13 +20,13 @@ export default function About() {
 
   return (
     <>
-      {/* Transparent Logout Button - Top Right */}
+      {/* 🔥 RED SOLID LOGOUT BUTTON - Top Right */}
       <button 
         onClick={() => {
           localStorage.clear();
           window.location.href = "/";
         }}
-        className="fixed top-6 right-6 z-50 bg-black/70 hover:bg-white/20 backdrop-blur-xl text-white px-6 py-3 rounded-full font-bold shadow-lg border border-white/30 hover:border-white/50 transition-all duration-300 text-sm sm:text-base"
+        className="fixed top-6 right-6 z-50 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-red-500/50 hover:shadow-xl hover:shadow-red-500/70 border border-red-400/50 transition-all duration-300 text-sm sm:text-base hover:scale-105 active:scale-95"
       >
         Logout
       </button>
@@ -53,7 +53,7 @@ export default function About() {
         
         {/* ✅ SINGLE FULL-WIDTH TEXT BOX - HORIZONTALLY STRETCHED */}
         <div className="w-full max-w-4xl bg-white/15 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl px-8 py-12 mb-12">
-          
+         
           {/* Title - Centered */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#ff0000] via-[#708ed8] to-[#FFFFFF] bg-clip-text text-transparent drop-shadow-2xl text-center leading-tight mb-8">
             Know Your Blood Group — Quickly & Easily

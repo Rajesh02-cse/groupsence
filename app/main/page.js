@@ -43,13 +43,13 @@ export default function Main() {
 
   return (
     <>
-      {/* Transparent Logout Button - Top Right */}
+      {/* 🔥 RED SOLID LOGOUT BUTTON - Top Right */}
       <button 
         onClick={() => {
           localStorage.clear();
           window.location.href = "/";
         }}
-        className="fixed top-6 right-6 z-50 bg-black/70 hover:bg-white/20 backdrop-blur-xl text-white px-6 py-3 rounded-full font-bold shadow-lg border border-white/30 hover:border-white/50 transition-all duration-300 text-sm sm:text-base"
+        className="fixed top-6 right-6 z-50 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-red-500/50 hover:shadow-xl hover:shadow-red-500/70 border border-red-400/50 transition-all duration-300 text-sm sm:text-base hover:scale-105 active:scale-95"
       >
         Logout
       </button>
