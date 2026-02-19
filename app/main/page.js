@@ -50,7 +50,9 @@ export default function Main() {
           window.location.href = "/";
         }}
         className="fixed top-6 right-6 z-50 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-red-500/50 hover:shadow-xl hover:shadow-red-500/70 border border-red-400/50 transition-all duration-300 text-sm sm:text-base hover:scale-105 active:scale-95"
-      />
+      >
+        Logout
+      </button>
       
       {/* Glassy Responsive Navbar */}
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90vw] max-w-4xl bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 z-50 h-20 flex items-center justify-center px-6 sm:px-8 shadow-lg">
