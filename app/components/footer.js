@@ -8,7 +8,7 @@
           <h4 className="text-[16px] mb-1">Team</h4>
           <div className="text-[15px] flex flex-col gap-1">
             <div className="flex justify-center gap-4">
-              <span>Maheswar das • Rajesh paul</span>
+              <span>Maheswar Das • Rajesh Paul</span>
               </div>
             <div className="flex justify-center gap-4">
               <span>Rohan Yadav • Suman Kumar Bari</span>
@@ -28,14 +28,14 @@
             href="mailto:rajesh02-cse@groupsence.com" 
             className="text-blue-600 hover:text-blue-500 hover:underline text-[15px] transition"
           >
-            rajesh02-cse@groupsence.com
+            rajesh02-cse@ groupsence.vercel.app
           </a>
         </div>
 
         {/* Right Column: Mentor */}
         <div className="text-center">
           <h4 className="text-[16px] mb-1">Mentor</h4>
-          <p className="text-[15px]">Prof. Dhrubojyoti Ghosh</p>
+          <p className="text-[15px]">Prof. Dhrubajyoti Ghosh</p>
         </div>
 
       </div>
