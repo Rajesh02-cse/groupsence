@@ -1,6 +1,6 @@
- export default function Footer() {
+export default function Footer() {
   return (
-    <footer className="bg-black text-white py-6 px-4 border-t border-white/10 z-40">
+    <footer className="bg-black/20 backdrop-blur-xl text-white py-6 px-4 border-t border-white/10 z-40">
       <div className="max-w-[90rem] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
         
         {/* Left Column: Team */}
@@ -9,7 +9,7 @@
           <div className="text-[15px] flex flex-col gap-1">
             <div className="flex justify-center gap-4">
               <span>Maheswar Das • Rajesh Paul</span>
-              </div>
+            </div>
             <div className="flex justify-center gap-4">
               <span>Rohan Yadav • Suman Kumar Bari</span>
             </div>
@@ -18,17 +18,17 @@
 
         {/* Center Column: Institution & Project Info */}
         <div className="text-center">
-          <p className="text-[15px] mb-1  tracking-wide">
+          <p className="text-[15px] mb-1 tracking-wide">
             OMDAYAL GROUP OF INSTITUTIONS • CSE 
           </p>
           <div className="flex justify-center gap-4">
               <span>@2026 Blood Group Detection Project</span>
-            </div>
+          </div>
           <a 
             href="mailto:rajesh02-cse@groupsence.com" 
             className="text-blue-600 hover:text-blue-500 hover:underline text-[15px] transition"
           >
-            rajesh02-cse@ groupsence.vercel.app
+            rajesh02-cse@groupsence.vercel.app
           </a>
         </div>
 
